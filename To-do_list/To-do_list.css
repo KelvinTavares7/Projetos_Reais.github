@@ -1,0 +1,31 @@
+body {
+    background-image: url("Copilot_20260517_202921.png");
+    background-size: cover;
+    background-position: center;
+    filter: opacity(10px);
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 100px;
+    padding: 100px;
+}
+h1 {
+    color: #ffffff;
+    text-shadow: 2px 2px 2px #0e0d0d;
+    backdrop-filter: none; /* mantém o texto nítido */
+}
+p {
+    color: #ffffff;
+    text-shadow: 2px 2px 2px #0e0d0d;
+    backdrop-filter: none; /* mantém o texto nítido */
+
+}
+ul {
+    color: #ffffff;
+}
+li {
+    color: #ffffff;
+} 
+button {
+    border-radius: 100px;
+}
