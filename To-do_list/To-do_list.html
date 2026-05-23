@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+<head>                                  <!--   Cabeça   -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="To-do_list.css">
     <title>To-do list</title>
 </head>
-<body>
-    <h1><u>To-do list</u></h1>
-
+<body>                                  <!--   Corpo   -->
+    <h1><u>To-do list</u></h1> 
+ 
     <p>
         Qual é a tarefa que precisa realizar hoje?
     </p>
 
-<div>
-    <button type='button' id="btnTarefa" name="Criar Tarefa" onclick="CriarTarefa">Criar Tarefa</button>
-    <button type='button' id="btnVisuaizar" name="Tarefas" onclick="Tarefas">Tarefas</button>
-    <textarea id="caixa" style="display:none"></textarea>
-
-
-</div>
-<script src='To-do_list.js'></script>
+    <div id="container">
+        <button id="btnTarefa" onclick="CriarTarefa()">Criar Tarefa</button>
+        <button id="btnVisualizar" onclick="Tarefas()">Tarefas</button>
+        <div id="caixaContainer">
+            <textarea id="caixa" style="display:none" size = "10px"></textarea>
+            <br><button id ="btnSalvar" onclick="SalvarTarefa()" style="display:none">Salvar Tarefa</button>
+        </div>
+        <!--<br><button id ="btnSalvar" onclick="SalvarTarefa()" style="display:none">Salvar Tarefa</button> -->
+    </div>
+<script src='To-do_list.js'></script>     <!--   Link de segurança para script original   -->
 </body>
 </html>

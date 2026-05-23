@@ -1,8 +1,8 @@
 body {
-    background-image: url("Copilot_20260517_202921.png");
+    background-image: url("Copilot_20260519_202632.png");
     background-size: cover;
     background-position: center;
-    filter: opacity(10px);
+    filter: opacity(0.9);
     background-repeat: no-repeat;
     font-family: Arial, sans-serif;
     text-align: center;
@@ -28,4 +28,9 @@ li {
 } 
 button {
     border-radius: 100px;
+}
+#caixaContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* espaço entre botões e caixa */
 }
