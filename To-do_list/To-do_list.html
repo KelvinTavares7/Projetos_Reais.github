@@ -1,27 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>                                  <!--   Cabeça   -->
+<html lang="pt-BR">
+<head>
+    <!-- Cabeçalho da página -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="To-do_list.css">
     <title>To-do list</title>
 </head>
-<body>                                  <!--   Corpo   -->
-    <h1><u>To-do list</u></h1> 
- 
-    <p>
-        Qual é a tarefa que precisa realizar hoje?
-    </p>
+<body>
+    <!-- Título principal da página -->
+    <header>
+        <h1>To-do list</h1>
+    </header>
 
-    <div id="container">
+    <!-- Texto introdutório -->
+    <p>Qual é a tarefa que precisa realizar hoje?</p>
+
+    <!-- Área de botões de ação -->
+    <section id="acoes">
+        <!-- Botão para criar nova tarefa -->
         <button id="btnTarefa" onclick="CriarTarefa()">Criar Tarefa</button>
+        
+        <!-- Botão para visualizar tarefas existentes -->
         <button id="btnVisualizar" onclick="Tarefas()">Tarefas</button>
-        <div id="caixaContainer">
-            <textarea id="caixa" style="display:none" size = "10px"></textarea>
-            <br><button id ="btnSalvar" onclick="SalvarTarefa()" style="display:none">Salvar Tarefa</button>
-        </div>
-        <!--<br><button id ="btnSalvar" onclick="SalvarTarefa()" style="display:none">Salvar Tarefa</button> -->
-    </div>
-<script src='To-do_list.js'></script>     <!--   Link de segurança para script original   -->
+        
+        <!-- Botão para salvar tarefa atual -->
+        <button id="btnSalvar" onclick="SalvarTarefa()">Salvar Tarefa</button>
+    </section>
+
+    <!-- Container onde as tarefas/anotações serão exibidas -->
+    <section id="tarefasContainer">
+        <!-- Caixa de texto para digitar a tarefa (inicialmente oculta) -->
+        <textarea id="caixa" style="display: none;" rows="5" cols="40" placeholder="Digite sua tarefa aqui..."></textarea>
+    </section>
+
+    <!-- Importação do script JS -->
+    <script src="To-do_list.js"></script>
 </body>
 </html>

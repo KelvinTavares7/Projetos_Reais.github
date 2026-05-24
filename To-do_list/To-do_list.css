@@ -1,36 +1,75 @@
+/* Estilo geral da página */
 body {
-    background-image: url("Copilot_20260519_202632.png");
-    background-size: cover;
-    background-position: center;
-    filter: opacity(0.9);
-    background-repeat: no-repeat;
+    background-image: url("Copilot_20260519_202632.png"); /* imagem de fundo */
+    background-size: cover;       /* cobre toda a tela */
+    background-position: flex;  /* centraliza a imagem */
+    background-repeat: no-repeat; /* evita repetição da imagem */
+    opacity: 0.9;                 /* transparência leve */
+    
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 100px;
-    padding: 100px;
+    margin: 150px;                    /* remove margens padrão */
+    padding: 100px;                /* espaçamento interno */
 }
+
+/* Título principal */
 h1 {
     color: #ffffff;
-    text-shadow: 2px 2px 2px #0e0d0d;
-    backdrop-filter: none; /* mantém o texto nítido */
+    text-shadow: 2px 2px 2px #0e0d0d; /* sombra para destacar no fundo */
 }
+
+/* Texto introdutório */
 p {
     color: #ffffff;
     text-shadow: 2px 2px 2px #0e0d0d;
-    backdrop-filter: none; /* mantém o texto nítido */
-
 }
+
+/* Lista de tarefas */
 ul {
+    list-style-type: none; /* remove marcadores padrão */
+    padding: 0;
     color: #ffffff;
 }
+
 li {
     color: #ffffff;
-} 
-button {
-    border-radius: 100px;
+    margin: 5px 0; /* espaçamento entre itens */
 }
+
+/* Botões */
+button {
+    border-radius: 25px;          /* cantos arredondados */
+    padding: 10px 20px;           /* tamanho interno */
+    margin: 5px;                  /* espaçamento entre botões */
+    border: none;                 /* remove borda padrão */
+    background-color: #4CAF50;    /* verde padrão */
+    color: white;                 /* texto branco */
+    cursor: pointer;              /* cursor de mão */
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* animação suave */
+}
+
+button:hover {
+    background-color: #0749ff;    /* cor ao passar o mouse */
+}
+
+/* Container da caixa de texto */
 #caixaContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px; /* espaço entre botões e caixa */
+    position: center;
+    width: 400px;
+    height: 150px;
+    display: block;
+    margin: 20px auto; /* centraliza horizontalmente */  
+}
+
+/* Caixa de texto para anotações */
+textarea {
+    width: 400px;     /* largura padrão média */
+    height: 150px;    /* altura padrão média */
+    margin-top: 20px;
+    resize: vertical; /* permite redimensionar apenas na vertical */
+    padding: 20px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }

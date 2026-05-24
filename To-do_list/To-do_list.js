@@ -1,32 +1,71 @@
-let btn = document.getElementById('btnTarefa'); // Variável botão criar tarefa e seleciona o elemento do botão no DOM //
-let viewT = document.getElementById('btnVisualizar'); // Variável botão Visualizar e seleciona o elemento do botão no DOM //
-let caixa = document.getElementById('caixa'); // Variável da caixa de texto e seleciona o elemento do botão no DOM //
-let texto = caixa.value; // Varável do texto digitado na caixa e captura o valor digitado nela para eventuais manipulações //
+// Seleciona os elementos principais do HTML
+const btnCriar = document.getElementById("btnTarefa");
+const btnVisualizar = document.getElementById("btnVisualizar");
+const btnSalvar = document.getElementById("btnSalvar");
+const caixa = document.getElementById("caixa");
+const tarefasContainer = document.getElementById("tarefasContainer");
 
-function CriarTarefa() {  
-  //document.body.innerHTML = ""; // remove todo o conteúdo da página //                   // Define a função chamada CriarTarefa //
-  //document.body.innerHTML += "<p>Nova tarefa criada!</p>";
+// Array para armazenar as tarefas digitadas
+let tarefas = [];
 
-  // cria um container novo
-  const container = document.createElement("div");
-
-  // cria a caixa de anotações
-  const caixa = document.createElement("textarea");
-  caixa.id = "caixa";
-  container.appendChild(caixa);
-
-  // cria o botão salvar logo abaixo
-  const btnSalvar = document.createElement("button");
-  btnSalvar.id = "btnSalvar";
-  btnSalvar.textContent = "Salvar Tarefa";
-  btnSalvar.onclick = SalvarTarefa; // chama a função de salvar
-  container.appendChild(btnSalvar);
-
-  // adiciona tudo ao body
-  document.body.appendChild(container);
-function Tarefas(){
-    //alert("Aqui você verá suas tarefas criadas."); //
-    document.body.innerHTML = ""; // remove todo o conteúdo da página //
-    texto.innerHTML = ({caixa});
+/**
+ * Função para criar uma nova tarefa
+ * Exibe a caixa de texto para digitar a anotação
+ */
+function CriarTarefa() {
+  caixa.style.display = "block"; // mostra a caixa
+  caixa.value = "";              // limpa o conteúdo anterior
+  btnSalvar.style.display = "none"; // botão salvar só aparece quando digitar
 }
+
+/**
+ * Função para salvar a tarefa digitada
+ * Adiciona ao array e oculta a caixa
+ */
+function SalvarTarefa() {
+  const texto = caixa.value.trim();
+
+  if (texto !== "") {
+    tarefas.push(texto); // adiciona ao array
+    alert("Tarefa salva com sucesso!");
+    caixa.style.display = "none"; // esconde a caixa
+    btnSalvar.style.display = "none"; // esconde o botão salvar
+  } else {
+    alert("Digite uma tarefa antes de salvar.");
+  }
 }
+
+/**
+ * Função para visualizar todas as tarefas salvas
+ * Mostra em lista dentro do container
+ */
+function Tarefas() {
+  // limpa o container antes de mostrar
+  tarefasContainer.innerHTML = "";
+
+  if (tarefas.length === 0) {
+    tarefasContainer.innerHTML = "<p>Nenhuma tarefa salva ainda.</p>";
+    return;
+  }
+
+  // cria uma lista de tarefas
+  const lista = document.createElement("ul");
+  tarefas.forEach((tarefa) => {
+    const item = document.createElement("li");
+    item.textContent = tarefa;
+    lista.appendChild(item);
+  });
+
+  tarefasContainer.appendChild(lista);
+}
+
+/**
+ * Evento para mostrar o botão salvar somente quando digitar algo
+ */
+caixa.addEventListener("input", () => {
+  if (caixa.value.trim() !== "") {
+    btnSalvar.style.display = "inline-block";
+  } else {
+    btnSalvar.style.display = "none";
+  }
+});
