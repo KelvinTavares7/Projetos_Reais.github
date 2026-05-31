@@ -1,40 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Cabeçalho da página -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="To-do_list.css">
     <title>To-do list</title>
 </head>
 <body>
-    <!-- Título principal da página -->
     <header>
         <h1>To-do list</h1>
+        <h3>Qual tarefa você precisa realizar hoje?</h3>
     </header>
 
-    <!-- Texto introdutório -->
-    <p>Qual é a tarefa que precisa realizar hoje?</p>
+    <main>
+        <div id="botoes">
+            <button id="Criar-Tarefa">Criar Tarefa</button>
+            <button id="Tarefas">Tarefas</button>
+        </div>
 
-    <!-- Área de botões de ação -->
-    <section id="acoes">
-        <!-- Botão para criar nova tarefa -->
-        <button id="btnTarefa" onclick="CriarTarefa()">Criar Tarefa</button>
-        
-        <!-- Botão para visualizar tarefas existentes -->
-        <button id="btnVisualizar" onclick="Tarefas()">Tarefas</button>
-        
-        <!-- Botão para salvar tarefa atual -->
-        <button id="btnSalvar" onclick="SalvarTarefa()">Salvar Tarefa</button>
-    </section>
+        <div id="container"></div>
+        <ul id="listaTarefas"></ul>
+    </main>
 
-    <!-- Container onde as tarefas/anotações serão exibidas -->
-    <section id="tarefasContainer">
-        <!-- Caixa de texto para digitar a tarefa (inicialmente oculta) -->
-        <textarea id="caixa" style="display: none;" rows="5" cols="40" placeholder="Digite sua tarefa aqui..."></textarea>
-    </section>
+    <button id="Salvar">Salvar</button> <!-- botão fora, mas será movido via JS -->
 
-    <!-- Importação do script JS -->
     <script src="To-do_list.js"></script>
 </body>
 </html>

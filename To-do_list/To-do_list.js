@@ -1,71 +1,132 @@
-// Seleciona os elementos principais do HTML
-const btnCriar = document.getElementById("btnTarefa");
-const btnVisualizar = document.getElementById("btnVisualizar");
-const btnSalvar = document.getElementById("btnSalvar");
-const caixa = document.getElementById("caixa");
-const tarefasContainer = document.getElementById("tarefasContainer");
+// Referências globais
+const ct = document.getElementById("Criar-Tarefa");
+const mt = document.getElementById("Tarefas");
+const st = document.getElementById("Salvar");
+const container = document.getElementById("container");
+const lista = document.getElementById("listaTarefas");
 
-// Array para armazenar as tarefas digitadas
-let tarefas = [];
+// Inicialmente esconde o botão salvar
+st.classList.remove("visivel");
 
-/**
- * Função para criar uma nova tarefa
- * Exibe a caixa de texto para digitar a anotação
- */
-function CriarTarefa() {
-  caixa.style.display = "block"; // mostra a caixa
-  caixa.value = "";              // limpa o conteúdo anterior
-  btnSalvar.style.display = "none"; // botão salvar só aparece quando digitar
-}
+// Função para criar a caixa de texto
+function criarTarefa() {
+  ct.addEventListener("click", () => {
+    // Remove caixa anterior se existir
+    const existente = document.getElementById("caixaTexto");
+    if (existente) existente.remove();
 
-/**
- * Função para salvar a tarefa digitada
- * Adiciona ao array e oculta a caixa
- */
-function SalvarTarefa() {
-  const texto = caixa.value.trim();
+    // Cria nova caixa
+    const caixaTexto = document.createElement("input");
+    caixaTexto.type = "text";
+    caixaTexto.id = "caixaTexto";
+    caixaTexto.placeholder = "Digite algo aqui...";
+    caixaTexto.style.cssText = `
+      width: 300px;
+      height: 30px;
+      margin: 20px;
+      border: 2px solid #000;
+      border-radius: 7px;
+    `;
 
-  if (texto !== "") {
-    tarefas.push(texto); // adiciona ao array
-    alert("Tarefa salva com sucesso!");
-    caixa.style.display = "none"; // esconde a caixa
-    btnSalvar.style.display = "none"; // esconde o botão salvar
-  } else {
-    alert("Digite uma tarefa antes de salvar.");
-  }
-}
+    container.innerHTML = ""; // limpa container
+    container.appendChild(caixaTexto);
+    container.appendChild(st); // botão logo abaixo da caixa
 
-/**
- * Função para visualizar todas as tarefas salvas
- * Mostra em lista dentro do container
- */
-function Tarefas() {
-  // limpa o container antes de mostrar
-  tarefasContainer.innerHTML = "";
+    // Esconde lista ao criar nova tarefa
+    lista.innerHTML = "";
+    lista.style.display = "none";
+    st.classList.remove("visivel");
 
-  if (tarefas.length === 0) {
-    tarefasContainer.innerHTML = "<p>Nenhuma tarefa salva ainda.</p>";
-    return;
-  }
-
-  // cria uma lista de tarefas
-  const lista = document.createElement("ul");
-  tarefas.forEach((tarefa) => {
-    const item = document.createElement("li");
-    item.textContent = tarefa;
-    lista.appendChild(item);
+    // Só mostra o botão salvar quando começar a digitar
+    caixaTexto.addEventListener("input", () => {
+      if (caixaTexto.value.trim() !== "") {
+        st.classList.add("visivel");
+      } else {
+        st.classList.remove("visivel");
+      }
+    });
   });
-
-  tarefasContainer.appendChild(lista);
 }
 
-/**
- * Evento para mostrar o botão salvar somente quando digitar algo
- */
-caixa.addEventListener("input", () => {
-  if (caixa.value.trim() !== "") {
-    btnSalvar.style.display = "inline-block";
-  } else {
-    btnSalvar.style.display = "none";
-  }
-});
+// Função para salvar tarefa
+function salvarTarefa() {
+  st.addEventListener("click", () => {
+    const caixaTexto = document.getElementById("caixaTexto");
+    if (!caixaTexto) return;
+
+    const valor = caixaTexto.value.trim();
+    if (valor !== "") {
+      let tarefas = JSON.parse(localStorage.getItem("Tarefas")) || [];
+      tarefas.push({ texto: valor, concluida: false });
+      localStorage.setItem("Tarefas", JSON.stringify(tarefas));
+      alert("Tarefa salva: " + valor);
+
+      // Remove caixa e oculta botão salvar
+      caixaTexto.remove();
+      st.classList.remove("visivel");
+    }
+  });
+}
+
+// Função para mostrar tarefas
+function mostrarTarefas() {
+  mt.addEventListener("click", () => {
+    // Remove a caixa de texto se existir
+    const existente = document.getElementById("caixaTexto");
+    if (existente) existente.remove();
+    st.classList.remove("visivel");
+
+    let tarefas = JSON.parse(localStorage.getItem("Tarefas")) || [];
+    lista.innerHTML = "";
+    lista.style.display = "block";
+
+    if (tarefas.length > 0) {
+      tarefas.forEach((tarefaObj, index) => {
+        const li = document.createElement("li");
+
+        // Checkbox
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = tarefaObj.concluida;
+
+        // Texto da tarefa
+        const span = document.createElement("span");
+        span.textContent = tarefaObj.texto;
+        span.style.marginLeft = "10px";
+        if (tarefaObj.concluida) {
+          span.style.textDecoration = "line-through";
+        }
+
+        checkbox.addEventListener("change", () => {
+          tarefas[index].concluida = checkbox.checked;
+          localStorage.setItem("Tarefas", JSON.stringify(tarefas));
+          span.style.textDecoration = checkbox.checked ? "line-through" : "none";
+        });
+
+        // Botão excluir
+        const btnExcluir = document.createElement("button");
+        btnExcluir.textContent = "❌";
+        btnExcluir.style.marginLeft = "10px";
+        btnExcluir.addEventListener("click", () => {
+          tarefas.splice(index, 1);
+          localStorage.setItem("Tarefas", JSON.stringify(tarefas));
+          li.remove();
+        });
+
+        li.appendChild(checkbox);
+        li.appendChild(span);
+        li.appendChild(btnExcluir);
+        lista.appendChild(li);
+      });
+    } else {
+      const li = document.createElement("li");
+      li.textContent = "Nenhuma tarefa salva ainda.";
+      lista.appendChild(li);
+    }
+  });
+}
+
+// Inicializa
+criarTarefa();
+salvarTarefa();
+mostrarTarefas();
