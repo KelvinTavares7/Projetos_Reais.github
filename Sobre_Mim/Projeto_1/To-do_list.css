@@ -1,0 +1,117 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("Copilot_20260519_202632.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Comic Neue', cursive, sans-serif;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Cabeçalho */
+header {
+    margin-top: 40px;
+}
+
+h1 {
+    font-size: 42px;
+    text-shadow: 2px 2px 6px rgba(251, 255, 0, 0.8);
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 22px;
+    text-shadow: 1px 1px 3px rgba(251, 255, 0, 0.7);
+    margin-bottom: 30px;
+}
+
+/* Botões em linha */
+#botoes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+#botoes button {
+    background: linear-gradient(135deg, #dde000, #c5cc00);
+    color: #000;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#botoes button:hover {
+    transform: scale(1.08);
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
+
+/* Botão salvar com fade */
+#Salvar {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #dde000, #c5cc00);
+    color: #000;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#Salvar.visivel {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Container da caixa de texto */
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#caixaTexto {
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid #000;
+    border-radius: 7px;
+}
+
+/* Lista de tarefas */
+#listaTarefas {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+}
+
+#listaTarefas li {
+    background: rgba(255, 255, 255, 0.9);
+    margin: 10px auto;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 18px;
+}

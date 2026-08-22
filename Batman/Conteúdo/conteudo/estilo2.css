@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fonte e cores globais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    color: #080808;
+    line-height: 1.6;
+}
+
+/* Cabeçalho com animação */
+header {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(180deg, #000000, #1a1a1a);
+    border-bottom: 1px solid #444;
+    animation: fadeIn 1.5s ease-in-out; /* efeito de entrada */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00; /* brilho amarelo */
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+header h1:hover {
+    transform: scale(1.1); /* aumenta levemente ao passar o mouse */
+    text-shadow: 0 0 20px #ffcc00;
+}
+
+header h2 {
+    font-size: 1.5rem;
+    color: #cccccc;
+    margin-top: 0.5rem;
+    opacity: 0.9;
+}
+
+header > p {
+    font-size: 1rem;
+    color: #aaaaaa;
+    margin-top: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+}
+
+nav {
+    border: 2px solid #ffcc00;
+}
+
+nav ul {
+  display: flex;
+  gap: 15px; /* controla o espaço entre os itens */
+  list-style: none; /* remove os marcadores da lista */
+  padding: 0;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* deixa os itens lado a lado */
+}
+
+nav ul li {
+  position: relative; /* necessário para posicionar o submenu */
+  margin-right: 20px;
+}
+
+nav ul li a {
+  /*border-right: 2px solid #444;*/
+  /*border-left: 2px solid #444;*/
+  color: #ffcc00;
+  text-decoration: none;
+  padding: 8px 12px;
+  display: block;
+  border-inline-style: 2px solid #ffcc00;
+}
+
+nav ul li a:hover {
+    transform: scale(1.1); /* aumenta levemente ao passar o mouse */
+    text-shadow: 0 0 20px #ffcc00;
+}
+
+nav ul li .submenu {
+  display: none; /* escondido por padrão */
+  position: absolute;
+  top: 100%; /* aparece logo abaixo do item principal */
+  left: 0;
+  background: #070707;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li .submenu li a {
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+nav ul li:hover .submenu {
+  display: block; /* aparece ao passar o mouse */
+}
+
+/* Layout principal */
+main {
+    max-width: 2000px;
+    margin: 2rem auto;
+    padding: 1rem;
+    animation: fadeInUp 1.5s ease-in-out; /* entrada suave */
+}
+
+section > img {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* deixa os itens lado a lado */
+}
+
+/* Artigo com flexbox */
+.conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+/* Texto */
+.texto {
+    text-align: justify;
+    flex: 1 1 60%;
+    font-size: 1.1rem;
+    align-items: left;
+}
+
+/* Imagem com efeito */
+.imagem {
+    flex: 1 1 35%;
+    text-align: center;
+}
+
+.imagem img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.imagem img:hover {
+    transform: scale(1.05); /* zoom suave */
+    box-shadow: 0 8px 20px rgba(255, 204, 0, 0.6); /* brilho amarelo */
+}
+
+/* Legenda */
+figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    font-style: italic;
+}
+
+ul > li {
+    margin-bottom: 0.5rem;
+    margin-left: 1.5rem;
+
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .conteudo {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .texto {
+        font-size: 1rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}

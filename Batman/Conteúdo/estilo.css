@@ -1,0 +1,12 @@
+/* Importando a fonte Bebas Neue */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+body {
+  font-family: Arial, sans-serif; /* fonte padrão para o texto corrido */
+}
+
+h1, h2, h3 {
+  font-family: 'Bebas Neue', sans-serif; /* títulos com estilo forte */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de moedas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, rgb(30, 62, 245) 64, 250), #098f1b;
+            color: #1a1a2e;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        main {
+            background: #fcfbfb;
+            border-radius: 16px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            padding: 32px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 24px;
+            color: #444;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            border: 1px solid #ccd6f6;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #4f63ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        button:hover {
+            background: #3b4de0;
+        }
+
+        #resultado {
+            font-size: 18px;
+            font-weight: 600;
+            color: #25316d;
+            min-height: 28px;
+        }
+
+        .footer-button {
+            background: #eef2ff;
+            color: #1a1a2e;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Conversor de moedas</h1>
+        <p>Digite o valor, escolha as moedas e clique em converter.</p>
+
+        <label for="valor">Valor</label>
+        <input type="number" id="valor" placeholder="0.00" min="0" step="0.01" value="100" />
+
+        <label for="moedaOrigem">De</label>
+        <select id="moedaOrigem">
+            <option value="BRL">Real (BRL)</option>
+            <option value="USD">Dólar (USD)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="GBP">Libra (GBP)</option>
+            <option value="JPY">Iene (JPY)</option>
+        </select>
+
+        <label for="moedaDestino">Para</label>
+        <select id="moedaDestino">
+            <option value="USD">Dólar (USD)</option>
+            <option value="BRL">Real (BRL)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="GBP">Libra (GBP)</option>
+            <option value="JPY">Iene (JPY)</option>
+        </select>
+
+        <button id="converterBtn">Converter</button>
+        <div id="resultado"></div>
+        <button class="footer-button" onclick="window.location.href='index.html'">Menu</button>
+    </main>
+
+    <script>
+        const taxas = {
+            BRL: { BRL: 1, USD: 0.19, EUR: 0.18, GBP: 0.16, JPY: 27.54 },
+            USD: { BRL: 5.35, USD: 1, EUR: 0.92, GBP: 0.83, JPY: 144.10 },
+            EUR: { BRL: 5.81, USD: 1.09, EUR: 1, GBP: 0.90, JPY: 157.20 },
+            GBP: { BRL: 7.00, USD: 1.21, EUR: 1.11, GBP: 1, JPY: 174.30 },
+            JPY: { BRL: 0.037, USD: 0.0069, EUR: 0.0064, GBP: 0.0057, JPY: 1 }
+        };
+
+        function formatarValor(valor, moeda) {
+            const formato = {
+                BRL: { style: 'currency', currency: 'BRL' },
+                USD: { style: 'currency', currency: 'USD' },
+                EUR: { style: 'currency', currency: 'EUR' },
+                GBP: { style: 'currency', currency: 'GBP' },
+                JPY: { style: 'currency', currency: 'JPY', minimumFractionDigits: 0 }
+            };
+            return new Intl.NumberFormat('pt-BR', formato[moeda]).format(valor);
+        }
+
+        function converterMoeda() {
+            const valor = parseFloat(document.getElementById('valor').value);
+            const origem = document.getElementById('moedaOrigem').value;
+            const destino = document.getElementById('moedaDestino').value;
+            const resultadoEl = document.getElementById('resultado');
+
+            if (isNaN(valor) || valor < 0) {
+                resultadoEl.textContent = 'Informe um valor válido.';
+                return;
+            }
+
+            const taxa = taxas[origem][destino];
+            const convertido = valor * taxa;
+
+            resultadoEl.textContent = `${formatarValor(valor, origem)} = ${formatarValor(convertido, destino)}`;
+        }
+
+        document.getElementById('converterBtn').addEventListener('click', converterMoeda);
+        document.getElementById('valor').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') converterMoeda();
+        });
+    </script>
+</body>
+</html>
