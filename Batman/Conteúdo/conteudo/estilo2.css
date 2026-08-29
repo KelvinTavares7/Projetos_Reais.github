@@ -12,24 +12,24 @@ body {
     line-height: 1.6;
 }
 
-/* Cabeçalho com animação */
+/* Cabeçalho */
 header {
     text-align: center;
     padding: 2rem;
     background: linear-gradient(180deg, #000000, #1a1a1a);
     border-bottom: 1px solid #444;
-    animation: fadeIn 1.5s ease-in-out; /* efeito de entrada */
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 header h1 {
     font-size: 2.5rem;
     color: #ffcc00;
-    text-shadow: 0 0 10px #ffcc00; /* brilho amarelo */
+    text-shadow: 0 0 10px #ffcc00;
     transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
 header h1:hover {
-    transform: scale(1.1); /* aumenta levemente ao passar o mouse */
+    transform: scale(1.1);
     text-shadow: 0 0 20px #ffcc00;
 }
 
@@ -45,134 +45,141 @@ header > p {
     color: #aaaaaa;
     margin-top: 1rem;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     text-align: justify;
 }
 
+/* Navegação */
 nav {
     border: 2px solid #ffcc00;
 }
 
 nav ul {
-  display: flex;
-  gap: 15px; /* controla o espaço entre os itens */
-  list-style: none; /* remove os marcadores da lista */
-  padding: 0;
-  margin: 0;
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex; /* deixa os itens lado a lado */
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 nav ul li {
-  position: relative; /* necessário para posicionar o submenu */
-  margin-right: 20px;
+    position: relative;
 }
 
 nav ul li a {
-  /*border-right: 2px solid #444;*/
-  /*border-left: 2px solid #444;*/
-  color: #ffcc00;
-  text-decoration: none;
-  padding: 8px 12px;
-  display: block;
-  border-inline-style: 2px solid #ffcc00;
+    color: #ffcc00;
+    text-decoration: none;
+    padding: 8px 12px;
+    display: block;
 }
 
 nav ul li a:hover {
-    transform: scale(1.1); /* aumenta levemente ao passar o mouse */
+    transform: scale(1.1);
     text-shadow: 0 0 20px #ffcc00;
 }
 
 nav ul li .submenu {
-  display: none; /* escondido por padrão */
-  position: absolute;
-  top: 100%; /* aparece logo abaixo do item principal */
-  left: 0;
-  background: #070707;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-nav ul li .submenu li a {
-  padding: 8px 12px;
-  white-space: nowrap;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #070707;
+    list-style: none;
 }
 
 nav ul li:hover .submenu {
-  display: block; /* aparece ao passar o mouse */
+    display: block;
 }
 
-/* Layout principal */
 main {
-    max-width: 2000px;
-    margin: 2rem auto;
-    padding: 1rem;
-    animation: fadeInUp 1.5s ease-in-out; /* entrada suave */
+    width: 100%;              /* ocupa toda a largura */
+    margin: 0;                /* sem margem externa */
+    padding: 2rem;            /* respiro interno */
+    animation: fadeInUp 1.5s ease-in-out;
 }
 
 main#pg2 {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 1rem;
+    width: 100%;              /* ocupa toda a largura */
+    margin: 0;
+    padding: 2rem;
     background-color: #f8f6f6;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgb(248, 248, 248);
+    border-radius: 0;          /* sem bordas arredondadas para amplitude total */
+    box-shadow: none;          /* remove sombra que “fecha” o bloco */
 }
 
-/* Artigo com flexbox */
+/* Conteúdo com flexbox */
 .conteudo {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;   /* mantém lado a lado */
     gap: 2rem;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: space-between; /* força separação entre texto e imagem */
 }
 
-/* Texto */
 .texto {
-    text-align: justify;
-    flex: 1 1 60%;
+    flex: 1 1 60%;       /* ocupa mais espaço à esquerda */
+    text-align: left;
     font-size: 1.1rem;
-    align-items: left;
 }
 
-/* Imagem com efeito */
 .imagem {
-    flex: 1 1 35%;
-    text-align: center;
+    flex: 1 1 40%;       /* ocupa espaço à direita */
+    text-align: right;
 }
 
 .imagem img {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 8px;/* Layout principal */
 }
 
 .imagem img:hover {
-    transform: scale(1.05); /* zoom suave */
-    box-shadow: 0 8px 20px rgba(255, 204, 0, 0.6); /* brilho amarelo */
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 204, 0, 0.6);
+}
+
+iframe {
+    max-width: 100%; /* responsivo */
+    border-radius: 8px;
+}
+
+iframe:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(255, 204, 0, 0.6);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  border: 1px solid #444;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #000;
+  color: #ffcc00;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
 /* Legenda */
-figcaption {
+/*figcaption {
     margin-top: 0.5rem;
     font-size: 0.9rem;
     color: #aaaaaa;
     font-style: italic;
-}
+}*/
 
 ul > li {
     margin-bottom: 0.5rem;
     margin-left: 1.5rem;
-
 }
 
 /* Responsividade */
