@@ -7,9 +7,10 @@
 /* Fonte e cores globais */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ffffff;
+    background-color: #fffdfdd3;
     color: #080808;
     line-height: 1.6;
+    text-align: justify;
 }
 
 /* Cabeçalho */
@@ -25,7 +26,7 @@ header h1 {
     font-size: 2.5rem;
     color: #ffcc00;
     text-shadow: 0 0 10px #ffcc00;
-    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    transition: transorm 0.3s ease, text-shadow 0.3s ease;
 }
 
 header h1:hover {
@@ -91,20 +92,16 @@ nav ul li:hover .submenu {
     display: block;
 }
 
-main {
+main{
     width: 100%;              /* ocupa toda a largura */
     margin: 0;                /* sem margem externa */
-    padding: 2rem;            /* respiro interno */
-    animation: fadeInUp 1.5s ease-in-out;
-}
-
-main#pg2 {
-    width: 100%;              /* ocupa toda a largura */
-    margin: 0;
-    padding: 2rem;
-    background-color: #f8f6f6;
+    padding: 2rem;            /* respiro interno */ 
+    background-color: #1a1a1a; /* fundo escuro para contraste */
     border-radius: 0;          /* sem bordas arredondadas para amplitude total */
     box-shadow: none;          /* remove sombra que “fecha” o bloco */
+    animation: fadeInUp 1.5s ease-in-out; /* animação de entrada */
+    gap: 5px;                 /* espaçamento entre elementos internos */
+    display: flex;             /* mantém o layout flexível */
 }
 
 /* Conteúdo com flexbox */
@@ -114,33 +111,77 @@ main#pg2 {
     gap: 2rem;
     align-items: flex-start;
     justify-content: space-between; /* força separação entre texto e imagem */
+
+    /* Novos estilos para dar aparência de bloco de jornal */
+    background-color: #f9f9f9;   /* Fundo claro, imitando papel */
+    border: 1px solid #ccc;      /* Borda suave */
+    border-radius: 12px;         /* Cantos arredondados */
+    padding: 16px;               /* Espaçamento interno */
+    margin-bottom: 20px;         /* Espaço entre os blocos */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* Sombra leve */
 }
 
 .texto {
     flex: 1 1 60%;       /* ocupa mais espaço à esquerda */
-    text-align: left;
+    text-align: justify;
     font-size: 1.1rem;
+
+    /* Estilo de bloco */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .imagem {
     flex: 1 1 40%;       /* ocupa espaço à direita */
     text-align: right;
+
+    /* Estilo de bloco */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .imagem img {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;/* Layout principal */
+    border-radius: 8px; /* arredonda a própria imagem */
 }
 
-.imagem img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(255, 204, 0, 0.6);
+/* Coluna lateral (exemplo para mídias adicionais) */
+aside {
+    flex: 1;
+}
+
+aside section {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 iframe {
     max-width: 100%; /* responsivo */
+    height: auto;         /* ajusta proporcionalmente */
+    aspect-ratio: 16 / 9; /* define proporção fixa (ajuste conforme sua imagem) */
     border-radius: 8px;
+    display: block;
+
+    /* Estilo de bloco */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 iframe:hover {
@@ -168,14 +209,6 @@ th {
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-
-/* Legenda */
-/*figcaption {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: #aaaaaa;
-    font-style: italic;
-}*/
 
 ul > li {
     margin-bottom: 0.5rem;
