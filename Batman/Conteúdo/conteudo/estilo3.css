@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fonte e cores globais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fffdfdd3;
+    color: #080808;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Cabeçalho */
+header {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(180deg, #000000, #1a1a1a);
+    border-bottom: 1px solid #444;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00;
+    transition: transorm 0.3s ease, text-shadow 0.3s ease;
+}
+
+header h1:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px #ffcc00;
+}
+
+header h2 {
+    font-size: 1.5rem;
+    color: #cccccc;
+    margin-top: 0.5rem;
+    opacity: 0.9;
+}
+
+header > p {
+    font-size: 1rem;
+    color: #aaaaaa;
+    margin-top: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+/* Navegação */
+nav {
+    border: 2px solid #ffcc00;
+}
+
+nav ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: #ffcc00;
+    text-decoration: none;
+    padding: 8px 12px;
+    display: block;
+}
+
+nav ul li a:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px #ffcc00;
+}
+
+nav ul li .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #070707;
+    list-style: none;
+}
+
+nav ul li:hover .submenu {
+    display: block;
+}
+
+main{
+    width: 100%;              /* ocupa toda a largura */
+    margin: 0;                /* sem margem externa */
+    padding: 2rem;            /* respiro interno */ 
+    background-color: #1a1a1a; /* fundo escuro para contraste */
+    border-radius: 0;          /* sem bordas arredondadas para amplitude total */
+    box-shadow: none;          /* remove sombra que “fecha” o bloco */
+    animation: fadeInUp 1.5s ease-in-out; /* animação de entrada */
+    gap: 5px;                 /* espaçamento entre elementos internos */
+    display: flex;             /* mantém o layout flexível */
+}
+
+/* Conteúdo com flexbox */
+.conteudo {
+    display: flex;
+    flex-wrap: nowrap;   /* mantém lado a lado */
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: space-between; /* força separação entre texto e imagem */
+
+    /* Novos estilos para dar aparência de bloco de jornal */
+    background-color: #f9f9f9;   /* Fundo claro, imitando papel */
+    border: 1px solid #ccc;      /* Borda suave */
+    border-radius: 12px;         /* Cantos arredondados */
+    padding: 16px;               /* Espaçamento interno */
+    margin-bottom: 20px;         /* Espaço entre os blocos */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* Sombra leve */
+}
+
+.texto {
+    flex: 1 1 60%;       /* ocupa mais espaço à esquerda */
+    text-align: justify;
+    font-size: 1.1rem;
+
+    /* Estilo de bloco */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.imagem {
+    flex: 1 1 40%;       /* ocupa espaço à direita */
+    text-align: right;
+
+    /* Estilo de bloco */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.imagem img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* arredonda a própria imagem */
+}
+
+/* Coluna lateral (exemplo para mídias adicionais) */
+aside {
+    flex: 1;
+}
+
+aside section {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+iframe {
+    max-width: 100%; /* responsivo */
+    height: auto;         /* ajusta proporcionalmente */
+    aspect-ratio: 16 / 9; /* define proporção fixa (ajuste conforme sua imagem) */
+    border-radius: 8px;
+    display: block;
+
+    /* Estilo de bloco */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+iframe:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(255, 204, 0, 0.6);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  border: 1px solid #444;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #000;
+  color: #ffcc00;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+ul > li {
+    margin-bottom: 0.5rem;
+    margin-left: 1.5rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .conteudo {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .texto {
+        font-size: 1rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
